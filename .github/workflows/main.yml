@@ -1,5 +1,4 @@
 name: Windows11
-
 on: 
   workflow_dispatch:
  
@@ -15,10 +14,9 @@ jobs:
           sudo tailscale up
       - name: Copying Docker Container Files and Setting Everything Up.
         run: |
-          git clone https://github.com/dockur/windows.git .
           rm compose.yml
           wget -O loop.sh https://github.com/Efebey2903/Docker-VNC/raw/main/loop.sh
-          wget -O docker-compose.yml https://raw.githubusercontent.com/Efebey2903/Docker-VNC/main/win11_compose.yml
+          wget -O docker-compose.yml https://raw.githubusercontent.com/KyeEscobar1573-d/Docker-VNC/main/win11_compose.yml
           sleep 1
           docker-compose build
           sleep 2
