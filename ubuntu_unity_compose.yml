@@ -1,0 +1,21 @@
+services:
+  windows:
+    image: qemux/qemu-docker
+    container_name: qemu
+    environment:
+      BOOT: "https://cdimage.ubuntu.com/ubuntu-unity/releases/24.04/release/ubuntu-unity-24.04-desktop-amd64.iso"
+      RAM_SIZE: "12G"
+      CPU_CORES: "4"
+    devices:
+      - /dev/kvm
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /mnt:/storage
+    ports:
+      - 2233:22
+      - 8006:8006
+    stop_grace_period: 2m
+    restart: on-failure
+    
