@@ -1,27 +1,35 @@
-name: Windows 10X (Moon Valley)
+name: Custom Version
 
 on: 
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+        default: 'win10'
+        type: string
  
 jobs:
-  win10x:
+  custom:
     runs-on: ubuntu-22.04
     steps:
-      - name: Getting Updates and Installing Tailscale, Git.
+      - name: Installs stuff
         run: |
           sudo apt update -y
           sudo apt install git wget docker-compose -y
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up
-      - name: Copying Docker Container Files and Setting Everything Up.
+      - name: Copy the files and set everything up
         run: |
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
           wget -O loop.sh https://github.com/Efebey2903/Docker-VNC/raw/main/loop.sh
-          wget -O docker-compose.yml https://github.com/Efebey2903/Docker-VNC/raw/main/win10x_compose.yml
+          wget -O docker-compose.yml https://github.com/KyeEscobar1573-d/Docker-VNC/raw/main/custom_compose.yml
+
+          sed -i 's/VERSION/${{ inputs.version }}/g' docker-compose.yml
+          
           sleep 2
           docker-compose build
           sleep 2
-          docker-compose up 
-          cat compose
+          docker-compose up -d
           sh loop.sh
