@@ -21,6 +21,5 @@ jobs:
           sleep 1
           docker-compose build
           sleep 2
-          docker-compose up 
-          cat compose
+          docker-compose up -d
           sh loop.sh
