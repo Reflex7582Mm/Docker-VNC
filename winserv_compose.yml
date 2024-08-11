@@ -6,9 +6,7 @@ services:
       DISK_SIZE: "128G"
       RAM_SIZE: "12G"
       CPU_CORES: "4"
-      VERSION: "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1.240331-1435.ge_release_amd64fre_SERVER_LOF_PACKAGES_OEM.iso"
-      USERNAME: "Windows"
-      PASSWORD: "Password!"
+      VERSION: "2019"
     devices:
       - /dev/kvm
     volumes:
