@@ -15,8 +15,8 @@ services:
     volumes:
       - /mnt:/storage
     ports:
-      - 2233:22
-      - 8006:8006
+      - "2233:22"
+      - "8006:8006"
     stop_grace_period: 2m
     restart: on-failure
     
