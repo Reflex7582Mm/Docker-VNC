@@ -7,8 +7,6 @@ services:
       RAM_SIZE: "12G"
       CPU_CORES: "4"
       VERSION: "win11"
-      USERNAME: "Windows"
-      PASSWORD: "Password!"
     devices:
       - /dev/kvm
     volumes:
