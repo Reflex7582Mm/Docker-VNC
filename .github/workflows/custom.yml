@@ -19,7 +19,7 @@ jobs:
           sudo apt install git wget docker-compose -y
           curl -fsSL https://tailscale.com/install.sh | sh
           echo "$(whoami):testing123" | sudo chpasswd
-          sudo tailscale up
+          sudo tailscale up --advertise-exit-node
       - name: Copy the files and set everything up
         run: |
           git clone https://github.com/dockur/windows.git .
