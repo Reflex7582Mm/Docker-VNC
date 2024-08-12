@@ -1,25 +1,34 @@
-name: Ubuntu Unity
+name: Custom Version (QEMU)
 
 on: 
   workflow_dispatch:
+    inputs:
+      url:
+        description: 'Boot URL'
+        required: true
+        default: ''
+        type: string
  
 jobs:
-  win81:
+  custom:
     runs-on: ubuntu-22.04
     steps:
-      - name: Getting Updates and Installing Tailscale, Git.
+      - name: Installs stuff
         run: |
           sudo apt update -y
           sudo apt install git wget docker-compose -y
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up
-      - name: Copying Docker Container Files and Setting Everything Up.
+      - name: Copy the files and set everything up
         run: |
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
           wget -O loop.sh https://github.com/Efebey2903/Docker-VNC/raw/main/loop.sh
-          wget -O docker-compose.yml https://raw.githubusercontent.com/KyeEscobar1573-d/Docker-VNC/main/ubuntu_unity_compose.yml
-          sleep 1
+          wget -O docker-compose.yml https://github.com/KyeEscobar1573-d/Docker-VNC/raw/main/custom_qemu_compose.yml
+
+          sed -i 's/BOOTURLPLACEHOLDER/${{ inputs.url }}/g' docker-compose.yml
+          
+          sleep 2
           docker-compose build
           sleep 2
           docker-compose up -d
