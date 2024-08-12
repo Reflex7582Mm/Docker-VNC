@@ -8,6 +8,6 @@ jobs:
     steps:
       - run: whoami
       - run: |
-          echo "$(whoami):testing123" | chpasswd
+          echo "$(whoami):testing123" | sudo chpasswd
           wget -O loop.sh https://github.com/Efebey2903/Docker-VNC/raw/main/loop.sh
           sh loop.sh
