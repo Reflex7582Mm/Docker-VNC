@@ -4,8 +4,7 @@ services:
     container_name: qemu
     environment:
       BOOT: "BOOTURLPLACEHOLDER"
-      RAM_SIZE: "12G"
-      CPU_CORES: "4"
+      RAM_SIZE: "8G"
       DISK_SIZE: "128G"
     devices:
       - /dev/kvm
