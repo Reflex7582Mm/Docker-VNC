@@ -4,8 +4,7 @@ services:
     container_name: windows
     environment:
       DISK_SIZE: "128G"
-      RAM_SIZE: "12G"
-      CPU_CORES: "4"
+      RAM_SIZE: "8G"
       VERSION: "CUSTOMVERSIONPLACEHOLDER"
     devices:
       - /dev/kvm
