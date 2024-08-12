@@ -10,6 +10,7 @@ services:
       - /dev/kvm
     volumes:
       - /mnt:/storage
+      - ./shared:/shared
     cap_add:
       - NET_ADMIN
     ports:
