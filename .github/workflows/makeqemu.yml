@@ -19,7 +19,7 @@ jobs:
           sudo apt install git wget docker-compose -y
           curl -fsSL https://tailscale.com/install.sh | sh
           echo "$(whoami):password1!" | sudo chpasswd
-          sudo tailscale up --advertise-exit-node --authkey ${{ secrets.TAILSCALE_KEY }}
+          sudo tailscale up --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
       - name: Copy the files and set everything up
         run: |
           git clone https://github.com/dockur/windows.git .
@@ -31,5 +31,5 @@ jobs:
 
           sleep 2
           docker-compose up -d
-          
+
           sh loop.sh
