@@ -12,9 +12,10 @@ on:
   schedule:
     - cron: "50 */5 * * *"
 
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
+# Actually it is alright to not have this
+# concurrency:
+#   group: ${{ github.workflow }}
+#   cancel-in-progress: true
  
 jobs:
   custom:
