@@ -13,7 +13,7 @@ jobs:
           git clone https://github.com/KyeEscobar1573-d/Docker-VNC
 
           curl -O https://pagekite.net/pk/pagekite.py
-          cp .pagekite.rc ~
+          cp Docker-VNC/.pagekite.rc ~
           sed -i 's*KITENAMEPK*${{ secrets.KITENAME }}*g' ~/.pagekite.rc
           sed -i 's*KITESECRETPK*${{ secrets.KITESECRET }}*g' ~/.pagekite.rc
 
