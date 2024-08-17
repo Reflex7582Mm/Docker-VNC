@@ -14,8 +14,8 @@ jobs:
 
           curl -O https://pagekite.net/pk/pagekite.py
           cp Docker-VNC/.pagekite.rc ~
-          sed -i 's*KITENAMEPK*${{ secrets.KITENAME }}*g' ~/.pagekite.rc
-          sed -i 's*KITESECRETPK*${{ secrets.KITESECRET }}*g' ~/.pagekite.rc
+          sed -i'' -e 's*KITENAMEPK*${{ secrets.KITENAME }}*g' ~/.pagekite.rc
+          sed -i'' -e 's*KITESECRETPK*${{ secrets.KITESECRET }}*g' ~/.pagekite.rc
 
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
