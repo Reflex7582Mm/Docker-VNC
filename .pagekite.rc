@@ -18,7 +18,7 @@ service_on  = ssh:@kitename                   : localhost:22      : @kitesecret
 
 
 ##[ Miscellaneous settings ]##
-savefile = /home/runner/.pagekite.rc
+savefile = /Users/runner/.pagekite.rc
 max_read_bytes = 16256x3.100
 
 ###[ End of pagekite.py configuration ]#########
