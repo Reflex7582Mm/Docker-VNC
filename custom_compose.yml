@@ -3,7 +3,7 @@ services:
     image: dockurr/windows
     container_name: windows
     environment:
-      DISK_SIZE: "128G"
+      DISK_SIZE: "10G"
       RAM_SIZE: "8G"
       VERSION: "CUSTOMVERSIONPLACEHOLDER"
     devices:
@@ -11,6 +11,7 @@ services:
     volumes:
       - /mnt:/storage
       - ./shared:/shared
+      - ./install.bat:/oem
     cap_add:
       - NET_ADMIN
     ports:
