@@ -36,7 +36,6 @@ jobs:
       - name: Set everything up
         run: |
           wget -O docker-compose.yml https://github.com/KyeEscobar1573-d/Docker-VNC/raw/main/custom_compose.yml
-          wget -O install.bat https://github.com/KyeEscobar1573-d/Docker-VNC/raw/main/install.bat
           
           sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win10' }}/g' docker-compose.yml
 
