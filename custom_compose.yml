@@ -11,6 +11,7 @@ services:
     volumes:
       - /mnt:/storage
       - ./shared:/shared
+      - ./oem:/oem
     cap_add:
       - NET_ADMIN
     ports:

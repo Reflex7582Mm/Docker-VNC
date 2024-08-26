@@ -31,12 +31,11 @@ jobs:
       - name: Copy the files
         run: |
           git clone https://github.com/dockur/windows.git .
-          rm compose.yml
-          wget -O loop.sh https://github.com/KyeEscobar1573-d/Docker-VNC/raw/main/loop.sh
+          git clone https://github.com/KyeEscobar1573-d/Docker-VNC ~/workwork
       - name: Set everything up
         run: |
-          wget -O docker-compose.yml https://github.com/KyeEscobar1573-d/Docker-VNC/raw/main/custom_compose.yml
-          
+          cd ~/workwork
+
           sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win10' }}/g' docker-compose.yml
 
           sleep 2
