@@ -39,7 +39,7 @@ jobs:
 
           mkdir oem
 
-          wget -O oem/install.bat https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_compose.yml
+          wget -O oem/install.bat https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/oem/install.bat
 
           sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win10' }}/g' docker-compose.yml
 
