@@ -1,0 +1,23 @@
+name: ubuntu & ssh
+
+on: 
+  workflow_dispatch:
+ 
+jobs:
+  ubuntu:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Docker
+        uses: crazy-max/ghaction-setup-docker@v3.3.0
+
+      - name: Getting Updates and Installing Tailscale, Git.
+        run: |
+          sudo apt update -y
+          sudo apt install git wget docker-compose -y
+          curl -fsSL https://tailscale.com/install.sh | sh
+          sudo tailscale up --ssh
+      - name: looping
+        run: |
+          curl -fsSL https://github.com/Efebey2903/Docker-VNC/raw/main/loop.sh | sh

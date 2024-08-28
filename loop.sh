@@ -1,4 +1,5 @@
 #!/bin/bash
+echo Visit https://login.tailscale.com/admin/machines to ssh ubuntu
 
 sudo pkill provjobd
 
