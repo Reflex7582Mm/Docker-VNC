@@ -2,7 +2,6 @@ name: Make macOS Machine
 
 on: 
   workflow_dispatch:
-  push:
 
 jobs:
   macos:
