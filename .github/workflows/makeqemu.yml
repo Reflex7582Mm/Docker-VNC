@@ -1,0 +1,35 @@
+name: Custom Version (QEMU)
+
+on: 
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Boot URL'
+        required: true
+        default: ''
+        type: string
+ 
+jobs:
+  custom:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Installs stuff
+        run: |
+          sudo apt update -y
+          sudo apt install git wget docker-compose -y
+          curl -fsSL https://tailscale.com/install.sh | sh
+          echo "$(whoami):password1!" | sudo chpasswd
+          sudo tailscale up --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
+      - name: Copy the files and set everything up
+        run: |
+          git clone https://github.com/dockur/windows.git .
+          rm compose.yml
+          wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
+          wget -O docker-compose.yml https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_qemu_compose.yml
+
+          sed -i 's*BOOTURLPLACEHOLDER*${{ inputs.url }}*g' docker-compose.yml
+
+          sleep 2
+          docker-compose up -d
+
+          sh loop.sh

@@ -1,0 +1,49 @@
+name: Make Machine
+
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: false
+        default: 'win10'
+        type: string
+
+  schedule:
+    - cron: "50 */5 * * *"
+
+# Actually it is alright to not have this
+# concurrency:
+#   group: ${{ github.workflow }}
+#   cancel-in-progress: true
+ 
+jobs:
+  custom:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Installs stuff
+        run: |
+          sudo apt update -y
+          sudo apt install git wget docker-compose -y
+          curl -fsSL https://tailscale.com/install.sh | sh
+          echo "$(whoami):password1!" | sudo chpasswd
+          sudo tailscale up --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
+      - name: Copy the files
+        run: |
+          git clone https://github.com/dockur/windows.git .
+          rm compose.yml
+          wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
+      - name: Set everything up
+        run: |
+          wget -O docker-compose.yml https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_compose.yml
+
+          mkdir oem
+
+          wget -O oem/install.bat https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_compose.yml
+
+          sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win10' }}/g' docker-compose.yml
+
+          sleep 2
+          docker-compose up -d
+
+          sh loop.sh

@@ -1,0 +1,21 @@
+services:
+  windows:
+    image: qemux/qemu-docker
+    container_name: qemu
+    environment:
+      BOOT: "BOOTURLPLACEHOLDER"
+      RAM_SIZE: "8G"
+      DISK_SIZE: "128G"
+    devices:
+      - /dev/kvm
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /mnt:/storage
+    ports:
+      - "2233:22"
+      - "8006:8006"
+    stop_grace_period: 2m
+    restart: on-failure
+    

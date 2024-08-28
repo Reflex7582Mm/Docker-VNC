@@ -3,16 +3,15 @@ services:
     image: dockurr/windows
     container_name: windows
     environment:
-      DISK_SIZE: "128G"
-      RAM_SIZE: "12G"
-      CPU_CORES: "4"
-      VERSION: "win10"
-      USERNAME: "Windows"
-      PASSWORD: "Password!"
+      DISK_SIZE: "108G"
+      RAM_SIZE: "8G"
+      VERSION: "CUSTOMVERSIONPLACEHOLDER"
     devices:
       - /dev/kvm
     volumes:
       - /mnt:/storage
+      - ./shared:/shared
+      - ./oem:/oem
     cap_add:
       - NET_ADMIN
     ports:
