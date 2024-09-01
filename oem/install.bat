@@ -26,4 +26,13 @@ chromeremotedesktophost.msi
 curl.exe -O https://ninite.com/chrome/ninite.exe
 ninite.exe
 
-logoff
+powershell -Command "Invoke-WebRequest https://github.com/cramaboule/Silent-Ninite/raw/main/ninite-silent.exe -OutFile silent.exe"
+
+silent.exe
+
+:checkloop
+
+tasklist | findstr /i ninite.exe
+if errorlevel 0 (logoff) else (ping -n 1 127.0.0.1 > nul)
+
+goto checkloop
