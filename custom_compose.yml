@@ -6,6 +6,8 @@ services:
       DISK_SIZE: "108G"
       RAM_SIZE: "8G"
       VERSION: "CUSTOMVERSIONPLACEHOLDER"
+      XRES: "1920"
+      YRES: "1080"
     devices:
       - /dev/kvm
     volumes:
