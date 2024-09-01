@@ -20,15 +20,16 @@ ECHO WshShell.SendKeys "%%{F4}"                           >>"%TempVBSFile%"
 
 cscript //nologo "%TempVBSFile%"
 
+ping -n 10 127.0.0.1 > nul
+
 curl.exe -O https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
 chromeremotedesktophost.msi
 
 curl.exe -O https://ninite.com/chrome/ninite.exe
-ninite.exe
 
-powershell -Command "Invoke-WebRequest https://github.com/cramaboule/Silent-Ninite/raw/main/ninite-silent.exe -OutFile silent.exe"
+curl.exe -O https://github.com/cramaboule/Silent-Ninite/raw/main/ninite-silent.exe
 
-silent.exe
+ninite-silent.exe
 
 :checkloop
 
