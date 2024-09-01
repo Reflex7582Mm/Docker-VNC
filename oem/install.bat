@@ -8,7 +8,7 @@ reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Perso
 reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d "0" /f
 
 explorer ms-settings:display
-ping -n 2 127.0.0.1 > nul
+ping -n 75 127.0.0.1 > nul
 
 SET TempVBSFile=%tmp%\~tmpSendKeysTemp.vbs
 IF EXIST "%TempVBSFile%" DEL /F /Q "%TempVBSFile%"
@@ -20,15 +20,12 @@ ECHO WshShell.SendKeys "%%{F4}"                           >>"%TempVBSFile%"
 
 cscript //nologo "%TempVBSFile%"
 
-ping -n 10 127.0.0.1 > nul
-
 curl.exe -O https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
 chromeremotedesktophost.msi
 
 curl.exe -O https://ninite.com/chrome/ninite.exe
 
-curl.exe -O https://github.com/cramaboule/Silent-Ninite/raw/main/ninite-silent.exe
-
+curl.exe -O https://raw.githubusercontent.com/cramaboule/Silent-Ninite/main/ninite-silent.exe
 ninite-silent.exe
 
 :checkloop
