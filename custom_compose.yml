@@ -3,7 +3,6 @@ services:
     image: dockurr/windows
     container_name: windows
     environment:
-      DISK_SIZE: "108G"
       RAM_SIZE: "8G"
       VERSION: "CUSTOMVERSIONPLACEHOLDER"
       XRES: "1920"
