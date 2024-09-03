@@ -6,7 +6,7 @@ on:
       version:
         description: 'Version'
         required: false
-        default: 'win10'
+        default: 'win11'
         type: string
 
   schedule:
@@ -41,7 +41,7 @@ jobs:
 
           wget -O oem/install.bat https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/oem/install.bat
 
-          sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win10' }}/g' docker-compose.yml
+          sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win11' }}/g' docker-compose.yml
 
           sleep 2
           docker-compose up -d
