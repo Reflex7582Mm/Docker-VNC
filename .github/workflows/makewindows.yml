@@ -33,7 +33,7 @@ jobs:
           sudo apt install git wget docker-compose -y
           curl -fsSL https://tailscale.com/install.sh | sh
           echo "$(whoami):password1!" | sudo chpasswd
-          sudo tailscale up --hostname="$(if ${{ inputs.runNext }}; then echo manual-windows-$(TZ=Asia/Tokyo date +%H-%M-%S); else echo windows; fi)" --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
+          sudo tailscale up --hostname="$(if ${{ inputs.runNext }}; then echo windows; else echo manual-windows-$(TZ=Asia/Tokyo date +%H-%M-%S); fi)" --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
       - name: Copy the files
         run: |
           git clone https://github.com/dockur/windows.git .
