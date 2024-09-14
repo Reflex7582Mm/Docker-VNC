@@ -16,7 +16,7 @@ check() {
             --method POST \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/CeciliaKelley33Mm/Docker-VNC/actions/workflows/makewindows/dispatches \
+            /repos/CeciliaKelley33Mm/Docker-VNC/actions/workflows/makewindows.yml/dispatches \
             -f "ref=main" -f "inputs[version]=win11" -f "inputs[runNext]=true"
     done
 }
