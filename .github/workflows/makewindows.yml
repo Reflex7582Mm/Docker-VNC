@@ -39,6 +39,7 @@ jobs:
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
           wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
+          chmod +x loop.sh
       - name: Set everything up
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
