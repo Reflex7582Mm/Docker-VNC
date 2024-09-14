@@ -55,4 +55,4 @@ jobs:
           sleep 2
           docker-compose up -d
 
-          sh loop.sh ${{ inputs.runNext }}
+          bash loop.sh ${{ inputs.runNext }}

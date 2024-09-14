@@ -18,7 +18,6 @@ jobs:
 
           git clone https://github.com/dockur/windows.git
           wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
-          chmod +x loop.sh
       - name: Set everything up
         run: |
           python3.11 pagekite.py &
@@ -42,4 +41,4 @@ jobs:
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -console
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
 
-          sh loop.sh
+          bash loop.sh
