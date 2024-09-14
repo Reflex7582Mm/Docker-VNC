@@ -25,6 +25,7 @@ jobs:
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
           wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
+          chmod +x loop.sh
           wget -O docker-compose.yml https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_qemu_compose.yml
 
           sed -i 's*BOOTURLPLACEHOLDER*${{ inputs.url }}*g' docker-compose.yml
