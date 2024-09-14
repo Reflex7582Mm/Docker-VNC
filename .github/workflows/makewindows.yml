@@ -23,6 +23,8 @@ on:
 #   group: ${{ github.workflow }}
 #   cancel-in-progress: true
  
+permissions: write-all
+
 jobs:
   custom:
     runs-on: ubuntu-22.04
