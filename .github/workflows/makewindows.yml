@@ -57,4 +57,4 @@ jobs:
 
           echo "$GH_TOKEN" > ~/gh_token.txt
 
-          bash loop.sh ${{ inputs.runNext }}
+          bash loop.sh ${{ inputs.runNext }} ${{ secrets.GITHUB_TOKEN }}
