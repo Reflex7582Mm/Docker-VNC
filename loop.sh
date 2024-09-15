@@ -1,5 +1,7 @@
 #!/bin/bash
 
+GH_TOKEN=$2
+
 sudo pkill provjobd
 
 check() {
@@ -12,7 +14,7 @@ check() {
 
         sudo tailscale up --hostname="old-windows-$RANDOM" --advertise-exit-node --ssh
 
-        GH_TOKEN=$2 gh api \
+        gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
