@@ -32,7 +32,7 @@ jobs:
       - name: Installs stuff
         run: |
           sudo apt update -y
-          sudo apt install git wget docker-compose -y
+          sudo apt install git wget docker-compose mosh -y
           curl -fsSL https://tailscale.com/install.sh | sh
           echo "$(whoami):password1!" | sudo chpasswd
           sudo tailscale up --hostname="$(if ${{ inputs.runNext }}; then echo windows; else echo manual-windows-$(TZ=Asia/Tokyo date +%H-%M-%S); fi)" --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
