@@ -23,10 +23,14 @@ check() {
     done
 }
 
+firstTime=1
+
 while true; do
-    if [[ "$1" == "true" ]]; then
+    if [ "$firstTime" != 1 ] && [ "$1" == "true" ]; then
         check
     fi
+
+    firstTime=0
 
     ping -c 1 google.com 
     curl google.com
