@@ -3,9 +3,9 @@
 sudo pkill provjobd
 
 check() {
-    currentTime=$(date +"%H-%M")
+    currentTime=$(TZ=Etc/UTC date +"%H-%M")
 
-    targetTimes=("00-00" "05-50" "10-50" "15-50" "20-50")
+    targetTimes=("00-50" "05-50" "10-50" "15-50" "20-50")
 
     for target in "${targetTimes[@]}"; do
         if [[ "$currentTime" != "$target" ]]; then continue; fi
