@@ -32,6 +32,9 @@ while true; do
 
     firstTime=0
 
+    sudo sync
+    echo 3 | sudo tee /proc/sys/vm/drop_caches
+
     ping -c 1 google.com 
     curl google.com
 
