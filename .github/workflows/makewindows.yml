@@ -39,8 +39,8 @@ jobs:
           
           sudo tailscale up --hostname="$(if ${{ inputs.runNext }}; then echo windows; else echo manual-windows-$(TZ=Asia/Tokyo date +%H-%M-%S); fi)" --advertise-exit-node --ssh --authkey ${{ secrets.TAILSCALE_KEY }}
 
-          sed -i 's/unset .*//g' .bashrc
-          sed -i 's/#force_color_prompt/force_color_prompt/g' .bashrc
+          sed -i 's/unset .*//g' $HOME/.bashrc
+          sed -i 's/#force_color_prompt/force_color_prompt/g' $HOME/.bashrc
 
           echo 'source $HOME/.bashrc' | sudo tee -a /etc/profile
       - name: Copy the files
