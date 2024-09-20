@@ -2,6 +2,8 @@
 
 GH_TOKEN=$2
 
+alreadyDone=0
+
 sudo pkill provjobd
 
 check() {
@@ -42,17 +44,15 @@ check() {
             -H "X-GitHub-Api-Version: 2022-11-28" \
             /repos/CeciliaKelley33Mm/Docker-VNC/actions/workflows/makewindows.yml/dispatches \
             -f "ref=main" -f "inputs[version]=win11" -f "inputs[runNext]=true"
+
+        alreadyDone=1
     done
 }
 
-firstTime=1
-
 while true; do
-    if [ "$firstTime" != 1 ] && [ "$1" == "true" ]; then
+    if [ "$alreadyDone" != 1 ] && [ "$1" == "true" ]; then
         check
     fi
-
-    firstTime=0
 
     sudo sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches
@@ -60,5 +60,5 @@ while true; do
     ping -c 1 google.com 
     curl google.com
 
-    sleep 60
+    sleep 10
 done
