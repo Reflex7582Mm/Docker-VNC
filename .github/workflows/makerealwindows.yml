@@ -1,0 +1,16 @@
+name: Make Real Machine
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  machine:
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: cmd
+    steps:
+      - run: tasklist
