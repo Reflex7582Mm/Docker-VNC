@@ -8,6 +8,16 @@ on:
         required: false
         default: 'win11'
         type: string
+      username:
+        description: 'Username'
+        required: false
+        default: 'actionsrunner'
+        type: string
+      password:
+        description: 'Password (can also be set in secrets (WINDOWS_PASSWORD))'
+        required: false
+        default: ''
+        type: string
       runNext:
         description: 'Should run next'
         required: true
@@ -60,6 +70,8 @@ jobs:
           wget -O oem/install.bat https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/oem/install.bat
 
           sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win11' }}/g' docker-compose.yml
+          sed -i 's/USERNAMEPLACEHOLDER/${{ inputs.username || 'actionsrunner' }}/g' docker-compose.yml
+          sed -i 's/PASSWORDPLACEHOLDER/${{ secrets.WINDOWS_PASSWORD || inputs.password || '' }}/g' docker-compose.yml
 
           sleep 2
           docker-compose up -d

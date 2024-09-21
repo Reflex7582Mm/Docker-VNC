@@ -5,6 +5,8 @@ services:
     environment:
       RAM_SIZE: "8G"
       VERSION: "CUSTOMVERSIONPLACEHOLDER"
+      USERNAME: "USERNAMEPLACEHOLDER"
+      PASSWORD: "PASSWORDPLACEHOLDER"
       XRES: "1920"
       YRES: "1080"
     devices:
