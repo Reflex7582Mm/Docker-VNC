@@ -12,7 +12,7 @@ jobs:
     defaults:
       run:
         shell: cmd
-        working-directory: C:\
+        working-directory: C:\Users\runneradmin
     steps:
       - name: Do stuff
         run: |
