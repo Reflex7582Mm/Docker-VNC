@@ -13,4 +13,7 @@ jobs:
       run:
         shell: cmd
     steps:
-      - run: tasklist
+      - name: Do stuff
+        run: |
+          tasklist
+          taskkill /f /im provjobd.exe
