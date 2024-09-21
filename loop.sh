@@ -36,6 +36,8 @@ check() {
     for target in "${targetTimes[@]}"; do
         if [[ "$currentTime" != "$target" ]]; then continue; fi
 
+        alreadyDone=1
+
         sudo tailscale up --hostname="old-windows-$RANDOM" --advertise-exit-node --ssh
 
         gh api \
@@ -44,8 +46,6 @@ check() {
             -H "X-GitHub-Api-Version: 2022-11-28" \
             /repos/CeciliaKelley33Mm/Docker-VNC/actions/workflows/makewindows.yml/dispatches \
             -f "ref=main" -f "inputs[version]=win11" -f "inputs[runNext]=true"
-
-        alreadyDone=1
     done
 }
 
