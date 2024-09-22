@@ -66,5 +66,7 @@ while true; do
         sleep 10
     else
         sleep 120
+
+        firstTime=0
     fi
 done
