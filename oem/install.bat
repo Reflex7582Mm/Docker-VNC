@@ -19,6 +19,11 @@ REM set DPI to 175% for grandma mode
 reg add "HKCU\Control Panel\Desktop" /v LogPixels /t REG_DWORD /d 144 /f
 reg add "HKCU\Control Panel\Desktop" /v Win8DpiScaling /t REG_DWORD /d 1 /f
 
+REM install OpenSSH Server (this takes quite a few minutes)
+powershell.exe -Command "Add-WindowsCapability -Online -Name OpenSSH.Server"
+powershell.exe -Command "Start-Service sshd"
+powershell.exe -Command "Set-Service -Name sshd -StartupType 'Automatic'"
+
 REM chocolatey and install some cool stuff
 powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
 ping -n 5 127.0.0.1
