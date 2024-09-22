@@ -1,5 +1,8 @@
 @echo off
 
+REM waits for the installing app screen to finish (windows 8 and above)
+ping -n 30 127.0.0.1
+
 cd C:\OEM
 
 REM activate windows :)
