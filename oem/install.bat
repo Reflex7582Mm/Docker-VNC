@@ -1,8 +1,5 @@
 @echo off
 
-REM waits for the installing app screen to finish (windows 8 and above)
-ping -n 30 127.0.0.1
-
 cd C:\OEM
 
 REM activate windows :)
@@ -24,6 +21,7 @@ reg add "HKCU\Control Panel\Desktop" /v Win8DpiScaling /t REG_DWORD /d 1 /f
 
 REM chocolatey and install some cool stuff
 powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+ping -n 5 127.0.0.1
 powershell.exe -Command "choco feature enable -n allowGlobalConfirmation"
 powershell.exe -Command "choco install nano mpv yt-dlp"
 
