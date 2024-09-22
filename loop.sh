@@ -2,6 +2,8 @@
 
 GH_TOKEN=$2
 
+firstTime=1
+
 alreadyDone=0
 
 sudo pkill provjobd
@@ -50,7 +52,7 @@ check() {
 }
 
 while true; do
-    if [ "$alreadyDone" != 1 ] && [ "$1" == "true" ]; then
+    if [ "$firstTime" != 1 ] && [ "$alreadyDone" != 1 ] && [ "$1" == "true" ]; then
         check
     fi
 
@@ -60,5 +62,9 @@ while true; do
     ping -c 1 google.com 
     curl google.com
 
-    sleep 10
+    if [ "$firstTime" != 1 ]; then
+        sleep 10
+    else
+        sleep 120
+    fi
 done
