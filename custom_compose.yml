@@ -18,6 +18,7 @@ services:
     cap_add:
       - NET_ADMIN
     ports:
+      - 2233:22
       - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
