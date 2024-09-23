@@ -2,6 +2,12 @@
 
 GH_TOKEN=$2
 
+REPO=$3
+WORKFLOW_FILE=$4
+BRANCH=$5
+
+NAME=$6
+
 firstTime=1
 
 alreadyDone=0
@@ -40,14 +46,14 @@ check() {
 
         alreadyDone=1
 
-        sudo tailscale up --hostname="old-windows-$RANDOM" --advertise-exit-node --ssh
+        sudo tailscale up --hostname="old-$NAME-$RANDOM" --advertise-exit-node --ssh
 
         gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/CeciliaKelley33Mm/Docker-VNC/actions/workflows/makewindows.yml/dispatches \
-            -f "ref=main" -f "inputs[version]=win11" -f "inputs[runNext]=true"
+            "/repos/CeciliaKelley33Mm/$REPO/actions/workflows/$WORKFLOW_FILE/dispatches" \
+            -f "ref=$BRANCH" -f "inputs[runNext]=true"
     done
 }
 
