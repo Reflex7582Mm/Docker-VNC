@@ -26,9 +26,14 @@ powershell.exe -Command "Set-Service -Name sshd -StartupType 'Automatic'"
 
 REM chocolatey and install some cool stuff
 powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
-ping -n 5 127.0.0.1
-powershell.exe -Command "choco feature enable -n allowGlobalConfirmation"
-powershell.exe -Command "choco install nano mpv yt-dlp"
+
+REM --- Did you know? VVVV  this line below took me a few days to
+REM     realize there's actually a script to do this
+C:\ProgramData\chocolatey\redirects\RefreshEnv.cmd
+REM ---               ^^^^
+
+choco feature enable -n allowGlobalConfirmation
+choco install nano mpv yt-dlp
 
 REM CRD
 curl.exe -O https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
