@@ -24,6 +24,10 @@ powershell.exe -Command "Add-WindowsCapability -Online -Name OpenSSH.Server"
 powershell.exe -Command "Start-Service sshd"
 powershell.exe -Command "Set-Service -Name sshd -StartupType 'Automatic'"
 
+REM CRD
+curl.exe -O https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
+chromeremotedesktophost.msi
+
 REM chocolatey and install some cool stuff
 powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
 
@@ -33,22 +37,5 @@ call C:\ProgramData\chocolatey\redirects\RefreshEnv.cmd
 REM ---               ^^^^
 
 choco feature enable -n allowGlobalConfirmation
-choco install nano mpv yt-dlp
-
-REM CRD
-curl.exe -O https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
-chromeremotedesktophost.msi
-
-REM chrome (using ninite because i'm too lazy to get the latest version every time it upgrades)
-curl.exe -O https://ninite.com/chrome/ninite.exe
-
-curl.exe -O https://raw.githubusercontent.com/cramaboule/Silent-Ninite/main/ninite-silent.exe
-ninite-silent.exe
-
-REM restart when finished installing chrome
-:checkloop
-
-tasklist | findstr /i ninite.exe
-if errorlevel 0 (shutdown /r /t 0) else (ping -n 1 127.0.0.1 > nul)
-
-goto checkloop
+choco feature disable -n checksumFiles
+choco install nano mpv yt-dlp ffmpeg googlechrome chrome-remote-desktop-host
