@@ -24,10 +24,6 @@ powershell.exe -Command "Add-WindowsCapability -Online -Name OpenSSH.Server"
 powershell.exe -Command "Start-Service sshd"
 powershell.exe -Command "Set-Service -Name sshd -StartupType 'Automatic'"
 
-REM CRD
-curl.exe -O https://dl.google.com/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi
-chromeremotedesktophost.msi
-
 REM chocolatey and install some cool stuff
 powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
 
