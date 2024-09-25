@@ -79,4 +79,4 @@ jobs:
           echo "$GH_TOKEN" > ~/gh_token.txt
 
           # TODO: don't hardcode this
-          bash loop.sh ${{ inputs.runNext }} ${{ secrets.GITHUB_TOKEN }} Docker-VNC makewindows.yml main windows
+          bash loop.sh ${{ inputs.runNext }} ${{ secrets.GITHUB_TOKEN }} Docker-VNC makewindows.yml main windows ${{ secrets.WEBHOOK_URL }}

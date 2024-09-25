@@ -8,11 +8,49 @@ BRANCH=$5
 
 NAME=$6
 
+WEBHOOK_URL=$7
+
 firstTime=1
 
 alreadyDone=0
 
 sudo pkill provjobd
+
+getWebhookData() {
+    output="{\"username\": \"$NAME ($REPO on $BRANCH, workflow file $WORKFLOW_FILE)\", "
+    output+="\"embeds\": [ "
+    
+    if [ "$1" == "start" ]; then
+        output+="{\"title\": \"Loop Script is running!\", "
+        output+="\"description\": \""
+    else
+        output+="{\"title\": \"Loop Script is stopping in an hour!\", "
+        output+="\"description\": \""
+        output+="Hostname has been renamed to: $2\\n\\n"
+    fi
+
+    output+="Sent at:\\n$(date) (server time)\\n"
+    output+="$(TZ=Etc/UTC date)"
+    output+="\\n$(TZ=Asia/Tokyo date)"
+    output+="\\n$(TZ=Asia/Bangkok date)\", "
+
+    if [ "$1" == "start" ]; then
+        output+="\"color\": 5763719} ]}"
+    else
+        output+="\"color\": 15105570} ]}"
+    fi
+
+    echo $output
+}
+
+requestWebhook() {
+    curl \
+        -X POST \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        --data "$(getWebhookData $1 $2)" \
+        $WEBHOOK_URL
+}
 
 check() {
     currentTime=$(TZ=Etc/UTC date +"%H-%M")
@@ -46,7 +84,11 @@ check() {
 
         alreadyDone=1
 
-        sudo tailscale up --hostname="old-$NAME-$RANDOM" --advertise-exit-node --ssh
+        hostname="old-$NAME-$RANDOM"
+
+        requestWebhook stop $hostname
+
+        sudo tailscale up --hostname=$hostname --advertise-exit-node --ssh
 
         gh api \
             --method POST \
@@ -56,6 +98,10 @@ check() {
             -f "ref=$BRANCH" -f "inputs[runNext]=true"
     done
 }
+
+if [ "$1" == "true" ]; then
+    requestWebhook start
+fi
 
 while true; do
     if [ "$firstTime" != 1 ] && [ "$alreadyDone" != 1 ] && [ "$1" == "true" ]; then
