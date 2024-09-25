@@ -35,3 +35,7 @@ REM ---               ^^^^
 choco feature enable -n allowGlobalConfirmation
 choco feature disable -n checksumFiles
 choco install nano mpv yt-dlp ffmpeg googlechrome chrome-remote-desktop-host
+
+ping -n 3 127.0.0.1
+
+shutdown /r /t 0
