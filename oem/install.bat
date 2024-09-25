@@ -29,7 +29,7 @@ powershell.exe -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [Syst
 
 REM --- Did you know? VVVV  this line below took me a few days to
 REM     realize there's actually a script to do this
-C:\ProgramData\chocolatey\redirects\RefreshEnv.cmd
+call C:\ProgramData\chocolatey\redirects\RefreshEnv.cmd
 REM ---               ^^^^
 
 choco feature enable -n allowGlobalConfirmation
