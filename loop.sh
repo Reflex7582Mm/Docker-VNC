@@ -17,7 +17,7 @@ alreadyDone=0
 sudo pkill provjobd
 
 getWebhookData() {
-    output="{\"username\": \"$NAME ($REPO on $BRANCH, workflow file $WORKFLOW_FILE)\", "
+    output="{\"username\": \"$NAME\", "
     output+="\"embeds\": [ "
     
     if [ "$1" == "start" ]; then
@@ -28,6 +28,8 @@ getWebhookData() {
         output+="\"description\": \""
         output+="Hostname has been renamed to: $2\\n\\n"
     fi
+
+    output+="$REPO on $BRANCH, workflow file $WORKFLOW_FILE\\n\\n"
 
     output+="Sent at:\\n$(date) (server time)\\n"
     output+="$(TZ=Etc/UTC date)"
