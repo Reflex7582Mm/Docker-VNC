@@ -34,7 +34,7 @@ REM ---               ^^^^
 
 choco feature enable -n allowGlobalConfirmation
 choco feature disable -n checksumFiles
-choco install nano mpv yt-dlp ffmpeg googlechrome chrome-remote-desktop-host
+choco install nano mpv yt-dlp ffmpeg googlechrome chrome-remote-desktop-host opennbs powershell-core
 
 ping -n 3 127.0.0.1
 
