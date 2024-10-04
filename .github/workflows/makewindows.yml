@@ -57,7 +57,7 @@ jobs:
         run: |
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
-          wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
+          wget wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
           chmod +x loop.sh
       - name: Set everything up
         env:
@@ -78,5 +78,4 @@ jobs:
 
           echo "$GH_TOKEN" > ~/gh_token.txt
 
-          # TODO: don't hardcode this
           bash loop.sh ${{ inputs.runNext }} ${{ secrets.GITHUB_TOKEN }} Docker-VNC makewindows.yml main windows ${{ secrets.WEBHOOK_URL }}
