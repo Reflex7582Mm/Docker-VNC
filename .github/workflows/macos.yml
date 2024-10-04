@@ -17,7 +17,7 @@ jobs:
           sed -i'' -e 's*KITESECRETPK*${{ secrets.KITESECRET }}*g' ~/.pagekite.rc
 
           git clone https://github.com/dockur/windows.git
-          wget -O loop.sh https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/loop.sh
+          wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
       - name: Set everything up
         run: |
           python3.11 pagekite.py &
