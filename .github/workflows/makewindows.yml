@@ -37,7 +37,7 @@ permissions: write-all
 
 jobs:
   custom:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Installs stuff
         run: |
@@ -56,8 +56,7 @@ jobs:
       - name: Copy the files
         run: |
           git clone https://github.com/dockur/windows.git .
-          rm compose.yml
-          wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
+          rm compose.ymllatest https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
           chmod +x loop.sh
       - name: Set everything up
         env:
