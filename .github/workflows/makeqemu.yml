@@ -31,8 +31,8 @@ jobs:
         run: |
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
-          wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
-          wget -O docker-compose.yml https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_qemu_compose.yml
+          wget https://raw.githubusercontent.com/Reflex7582Mm/global/refs/heads/master/loop.sh
+          wget -O docker-compose.yml https://github.com/Reflex7582Mm/Docker-VNC/raw/main/custom_qemu_compose.yml
 
           sed -i 's*BOOTURLPLACEHOLDER*${{ inputs.url }}*g' docker-compose.yml
 

@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Copy the files
         run: |
-          git clone https://github.com/CeciliaKelley33Mm/Docker-VNC
+          git clone https://github.com/Reflex7582Mm/Docker-VNC
 
           curl -O https://pagekite.net/pk/pagekite.py
           cp Docker-VNC/.pagekite.rc ~
@@ -17,7 +17,7 @@ jobs:
           sed -i'' -e 's*KITESECRETPK*${{ secrets.KITESECRET }}*g' ~/.pagekite.rc
 
           git clone https://github.com/dockur/windows.git
-          wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
+          wget https://raw.githubusercontent.com/Reflex7582Mm/global/refs/heads/master/loop.sh
       - name: Set everything up
         run: |
           python3.11 pagekite.py &

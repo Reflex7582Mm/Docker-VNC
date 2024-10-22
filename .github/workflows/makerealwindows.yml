@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Do stuff
         run: |
-          curl.exe -O https://raw.githubusercontent.com/CeciliaKelley33Mm/Docker-VNC/main/realwindows.bat
+          curl.exe -O https://raw.githubusercontent.com/Reflex7582Mm/Docker-VNC/main/realwindows.bat
           start realwindows.bat
 
           :loop

@@ -58,19 +58,19 @@ jobs:
           git clone https://github.com/dockur/windows.git .
           rm compose.yml
 
-          wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/checkTime.js
+          wget https://raw.githubusercontent.com/Reflex7582Mm/global/refs/heads/master/checkTime.js
 
-          wget https://raw.githubusercontent.com/CeciliaKelley33Mm/global/refs/heads/master/loop.sh
+          wget https://raw.githubusercontent.com/Reflex7582Mm/global/refs/heads/master/loop.sh
           chmod +x loop.sh
       - name: Set everything up
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          wget -O docker-compose.yml https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/custom_compose.yml
+          wget -O docker-compose.yml https://github.com/Reflex7582Mm/Docker-VNC/raw/main/custom_compose.yml
 
           mkdir oem
 
-          wget -O oem/install.bat https://github.com/CeciliaKelley33Mm/Docker-VNC/raw/main/oem/install.bat
+          wget -O oem/install.bat https://github.com/Reflex7582Mm/Docker-VNC/raw/main/oem/install.bat
 
           sed -i 's/CUSTOMVERSIONPLACEHOLDER/${{ inputs.version || 'win11' }}/g' docker-compose.yml
           sed -i 's/USERNAMEPLACEHOLDER/${{ inputs.username || 'actionsrunner' }}/g' docker-compose.yml
